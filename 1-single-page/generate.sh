@@ -45,6 +45,10 @@ page_data=$(\
         -d '{"query":"query getBlogPost($id: String!) {blogPost(id: $id) { id, title, content }}","variables":{"id":"W-ogYlX0z0W79idySURpiA"}}'\
 )
 
+# debug build start
+echo $page_data
+#debug build end
+
 # Extract individual fields
 {
     read id;
