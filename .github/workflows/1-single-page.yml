@@ -15,6 +15,11 @@ jobs:
         env:
           API_TOKEN: ${{ secrets.API_TOKEN }}
         run: 1-single-page/generate.sh
+      - name: Files
+        run: |
+          ls
+          echo ----
+          ls 1-single-page
       - name: Save Output
         uses: actions/upload-artifact@v4
         with:
