@@ -17,7 +17,7 @@ jobs:
       - name: Generate
         env:
           API_TOKEN: ${{ secrets.API_TOKEN }}
-        run: generate.sh
+        run: ./generate.sh
       - name: Files
         run: |
           ls
