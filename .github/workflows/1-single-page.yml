@@ -6,12 +6,12 @@ on:
       - '1-single-page/**'
   workflow_dispatch:
 
-defaults:
-  working-directory: ./1-single-page
-
 jobs:
   generate:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./1-single-page
     steps:
       - uses: actions/checkout@v4
       - name: Generate
@@ -27,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: output
-          path: output/
+          path: 1-single-page/output/
