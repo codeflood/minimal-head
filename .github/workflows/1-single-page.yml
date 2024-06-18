@@ -9,20 +9,13 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./1-single-page
     steps:
       - uses: actions/checkout@v4
       - name: Generate
         env:
           API_TOKEN: ${{ secrets.API_TOKEN }}
+        working-directory: ./1-single-page
         run: ./generate.sh
-      - name: Files
-        run: |
-          ls
-          echo ----
-          ls 1-single-page
       - name: Save Output
         uses: actions/upload-artifact@v4
         with:
