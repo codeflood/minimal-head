@@ -19,4 +19,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: output
-          path: 1-single-page/output
+          path: 1-single-page/output/**
