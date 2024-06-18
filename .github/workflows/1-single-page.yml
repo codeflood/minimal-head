@@ -6,6 +6,9 @@ on:
       - '1-single-page/**'
   workflow_dispatch:
 
+defaults:
+  working-directory: ./1-single-page
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -14,7 +17,7 @@ jobs:
       - name: Generate
         env:
           API_TOKEN: ${{ secrets.API_TOKEN }}
-        run: 1-single-page/generate.sh
+        run: generate.sh
       - name: Files
         run: |
           ls
@@ -24,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: output
-          path: 1-single-page/output/page.html
+          path: output/
