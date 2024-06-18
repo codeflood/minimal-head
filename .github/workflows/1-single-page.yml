@@ -18,3 +18,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Generate
         run: 1-single-page/generate.sh
+      - name: Save Output
+        uses: actions/upload-artifact@v4
+        with:
+          name: output
+          path: 1-single-page/output
