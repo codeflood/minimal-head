@@ -32,22 +32,20 @@ function process_content {
     done
 }
 
-# Make sure output directory exists
-if [ ! -d "output" ]; then
-    mkdir output
+# Clear the output directory
+if [ -d "output" ]; then
+    rm -rf output
 fi
+mkdir output
 
 # Get page data from CH ONE
 page_data=$(\
     curl -X POST https://edge.sitecorecloud.io/api/graphql/v1 \
         -H "Content-Type: application/json" \
         -H "X-GQL-Token: ${API_TOKEN}" \
-        -d '{"query":"query getBlogPost($id: String!) {blogPost(id: $id) { id, title, content }}","variables":{"id":"W-ogYlX0z0W79idySURpiA"}}'\
+        -d '{"query":"query getBlogPost($id: String!) {blogPost(id: $id) { id, title, content }}","variables":{"id":"W-ogYlX0z0W79idySURpiA"}}' \
+        --fail-with-body
 )
-
-# debug build start
-echo $page_data
-#debug build end
 
 # Extract individual fields
 {
