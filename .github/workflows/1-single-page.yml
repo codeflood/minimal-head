@@ -1,0 +1,20 @@
+name: 1. Single Page
+
+on:
+  push:
+    paths:
+      - '1-single-page/**'
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate
+        run: 1-single-page/generate.sh
