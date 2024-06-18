@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Generate
+        env:
+          API_TOKEN: ${{ secrets.API_TOKEN }}
         run: 1-single-page/generate.sh
       - name: Save Output
         uses: actions/upload-artifact@v4
