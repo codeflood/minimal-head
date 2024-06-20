@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# API_TOKEN must be set as an environment variable before executing this script.
 
 # Exit on error
 set -e
