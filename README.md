@@ -9,3 +9,4 @@ This repository contains a collection of examples showing how to render content 
 ## Examples ##
 
 1. [Single Page](1-single-page) - Shows the simplest example, generating a single page.
+1. [Multiple Pages](2-multiple-pages) - Generates multiple pages of the same type.
