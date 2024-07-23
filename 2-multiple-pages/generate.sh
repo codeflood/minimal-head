@@ -20,23 +20,31 @@ page_data=$(\
     curl -X POST https://edge.sitecorecloud.io/api/graphql/v1 \
         -H "Content-Type: application/json" \
         -H "X-GQL-Token: ${API_TOKEN}" \
-        -d "{\"query\":\"${query}\",\"variables\":{\"id\":\"W-ogYlX0z0W79idySURpiA\"}}" \
+        -d "{\"query\":\"${query}\"}" \
         --fail-with-body
 )
 
-# Extract individual fields
-{
-    read id;
-    read title;
-    read content;
-} <<< $(echo ${page_data} | jq -r -c '.data.blogPost | .id, .title, .content')
+echo "${page_data}" | jq '.data.allBlogPost.results[]' -c | while read -r post
+do
+    # Extract individual fields
+    {
+        read id;
+        read name;
+        read title;
+        read content;
+    } <<< $(echo ${post} | jq -r -c '.id, .name, .title, .content')
 
-# Convert fields
-content=$(transform_prosemirror "$content")
+    # Convert fields
+    name=$(echo "$name" | tr [:upper:] [:lower:])
+    name=${name//[^a-z0-9_\-]/-}
+    content=$(transform_prosemirror "$content")
 
-# Write file
-html=$(cat template.html)
-html="${html//'[[id]]'/$id}"
-html="${html//'[[title]]'/$title}"
-html="${html//'[[content]]'/$content}"
-echo "$html" > output/page.html
+    # Write file
+    html=$(cat template.html)
+    html="${html//'[[id]]'/$id}"
+    html="${html//'[[title]]'/$title}"
+    html="${html//'[[content]]'/$content}"
+
+    echo "Writing file: output/$name.html"
+    echo "$html" > output/$name.html
+done

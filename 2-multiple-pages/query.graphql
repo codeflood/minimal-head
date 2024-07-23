@@ -1,7 +1,10 @@
-query getBlogPost($id: String!) {
-    blogPost(id: $id) {
-        id
-        title
-        content
+query getBlogPosts {
+  allBlogPost {
+    results {
+      id
+      name
+      title
+      content
     }
+  }
 }
