@@ -10,3 +10,4 @@ This repository contains a collection of examples showing how to render content 
 
 1. [Single Page](1-single-page) - Shows the simplest example, generating a single page.
 1. [Multiple Pages](2-multiple-pages) - Generates multiple pages of the same type.
+1. [More Field Types](3-more-field-types) - Add support for date and taxonomy fields.
