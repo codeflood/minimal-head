@@ -42,23 +42,23 @@ do
     publishDate=$(date -d"$publishDate" "+%d %B %Y")
     content=$(transform_prosemirror "$content")
 
-    category_ids=$(echo $rawCategories | jq -r '.[].id')
-    category_names=""
-    for category_id in $category_ids
+    categoryIds=$(echo $rawCategories | jq -r '.[].id')
+    categoryNames=""
+    for categoryId in $categoryIds
     do
-        case $category_id in
+        case $categoryId in
             taxonomy_blogPostCategory_auriga)
-                category_names="${category_names}<li>Auriga</li>"
+                categoryNames="${categoryNames}<li>Auriga</li>"
                 ;;
             taxonomy_blogPostCategory_expressSantorini)
-                category_names="${category_names}<li>Express Santorini</li>"
+                categoryNames="${categoryNames}<li>Express Santorini</li>"
                 ;;
             taxonomy_blogPostCategory_panorea)
-                category_names="${category_names}<li>Panorea</li>"
+                categoryNames="${categoryNames}<li>Panorea</li>"
                 ;;
         esac
     done
-    category_names="<ul>${category_names}</ul>"
+    categoryNames="<ul>${categoryNames}</ul>"
 
     # Write file
     html=$(cat template.html)
@@ -66,7 +66,7 @@ do
     html="${html//'[[title]]'/$title}"
     html="${html//'[[content]]'/$content}"
     html="${html//'[[date]]'/$publishDate}"
-    html="${html//'[[category_names]]'/$category_names}"
+    html="${html//'[[categoryNames]]'/$categoryNames}"
 
     echo "Writing file: output/$name.html"
     echo "$html" > output/$name.html
