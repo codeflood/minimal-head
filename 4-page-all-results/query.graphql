@@ -1,0 +1,20 @@
+query getBlogPosts($cursor: String) {
+  allBlogPost(first:3 orderBy:PUBLISHDATE_ASC after:$cursor) {
+    pageInfo {
+      hasNext
+      endCursor
+    }
+    results {
+      id
+      name
+      publishDate
+      title
+      content
+      category {
+        results {
+          id
+        }
+      }
+    }
+  }
+}

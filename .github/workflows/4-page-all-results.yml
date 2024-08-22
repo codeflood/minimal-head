@@ -1,0 +1,23 @@
+name: 4. Page all results
+
+on:
+  push:
+    paths:
+      - '4-page-all-results/**'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate
+        env:
+          API_TOKEN: ${{ secrets.API_TOKEN }}
+        working-directory: ./4-page-all-results
+        run: ./generate.sh
+      - name: Save Output
+        uses: actions/upload-artifact@v4
+        with:
+          name: output
+          path: 4-page-all-results/output/
