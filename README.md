@@ -12,3 +12,4 @@ This repository contains a collection of examples showing how to render content 
 1. [Multiple Pages](2-multiple-pages) - Generates multiple pages of the same type.
 1. [More Field Types](3-more-field-types) - Add support for date and taxonomy fields.
 1. [Page All Results](4-page-all-results) - Page over all results and not just a single page of results.
+1. [List Page](5-list-page) - Generate list pages to view and navigate all other pages.
