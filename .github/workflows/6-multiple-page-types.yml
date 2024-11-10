@@ -1,0 +1,23 @@
+name: 6. Multiple page types
+
+on:
+  push:
+    paths:
+      - '6-multiple-page-types/**'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate
+        env:
+          API_TOKEN: ${{ secrets.API_TOKEN }}
+        working-directory: ./6-multiple-page-types
+        run: ./generate.sh
+      - name: Save Output
+        uses: actions/upload-artifact@v4
+        with:
+          name: output
+          path: 6-multiple-page-types/output/
