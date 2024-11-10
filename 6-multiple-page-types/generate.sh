@@ -6,7 +6,6 @@ set -eu
 
 . ./transforms.sh
 . ./substitute-placeholders.sh
-. ./data.sh
 
 outDirBlog=output/blog
 outDirRecipe=output/recipe
@@ -179,6 +178,7 @@ do
             read mh_method;
         } <<< $(echo ${recipe} | jq -r -c '.id, .name, .title, .description, .prepTime, .cookingTime, .method')
         mh_ingredients=$(echo "${recipe}" | jq -r .ingredients)
+        mh_images=$(echo "${recipe}" | jq -r .images.results[].fileUrl)
 
         # Convert fields
         mh_name=$(echo "$mh_name" | tr [:upper:] [:lower:])
@@ -194,6 +194,15 @@ do
         done <<< "$mh_ingredients"
 
         mh_ingredients="<ul>${ingredient_list}</ul>"
+
+        image_tags=""
+
+        while read -r image
+        do
+            image_tags="${image_tags}<li><img src=\"${image}\" width=\"400\"/></li>"
+        done <<< "$mh_images"
+
+        mh_images="<ul>${image_tags}</ul>"
 
         # Write file
         mh_index_url=$index_filename

@@ -13,6 +13,13 @@ query getRecipes($cursor: String) {
       cookingTime
       ingredients
       method
+      images {
+        results {
+          fileUrl(transform: {
+            width: 400
+          })
+        }
+      }
     }
   }
 }
