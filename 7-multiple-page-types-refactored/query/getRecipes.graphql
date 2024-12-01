@@ -1,0 +1,25 @@
+query getRecipes($cursor: String) {
+  allRecipe(first:3 orderBy: __SYSUPDATEDAT_DESC after:$cursor) {
+    pageInfo {
+      hasNext
+      endCursor
+    }
+    results {
+      id
+      name
+      title
+      description
+      prepTime
+      cookingTime
+      ingredients
+      method
+      images {
+        results {
+          fileUrl(transform: {
+            width: 400
+          })
+        }
+      }
+    }
+  }
+}
