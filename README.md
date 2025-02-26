@@ -15,3 +15,4 @@ This repository contains a collection of examples showing how to render content 
 1. [List Page](5-list-page) - Generate list pages to view and navigate all other pages.
 1. [Multiple Page Types](6-multiple-page-types) - Generate multiple pages for multiple different page types.
 1. [Refactor Multiple Page Types](7-multiple-page-types-refactored) - A refactoring of the previous example (generate multiple page types).
+1. [Layouts and Components](8-layouts-and-components) - Adding page layouts and components to reduce code duplication.

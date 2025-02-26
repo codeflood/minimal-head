@@ -1,0 +1,43 @@
+:root {
+    --main-text: #444444;
+    --text-highlight: #3333bb;
+    --background: #dedede;
+}
+
+html {
+    font: 1rem Arial,sans-serif var(--main-text);
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--main-text);
+    }
+}
+
+header { 
+    nav {
+        padding: 1em 0;
+
+        a {
+            text-decoration: none;
+            color: var(--main-text);
+            padding-left: 1em;
+
+            &:hover {
+                text-decoration: underline;
+                color: var(--text-highlight);
+            }
+        }
+    }
+
+    background-color: var(--background);
+}
+
+#main {
+    display: grid;
+    grid-template-columns: auto 300px;
+    min-width: 800px;
+
+    aside {
+        padding: 1em;
+        background-color: var(--background);
+    }
+}

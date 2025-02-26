@@ -1,0 +1,16 @@
+query getLatestBlogPosts {
+  allBlogPost(first:2 orderBy:PUBLISHDATE_ASC) {
+    results {
+      id
+      name
+      publishDate
+      title
+      content
+      category {
+        results {
+          id
+        }
+      }
+    }
+  }
+}
