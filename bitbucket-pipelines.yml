@@ -1,0 +1,10 @@
+image: atlassian/default-image:4
+pipelines:
+  default:
+    - step:
+        name: "1. Single Page"
+        script: ./1-single-page/generate.sh
+        variables:
+          API_TOKEN: $API_TOKEN
+        artifacts:
+          - ./1-single-page/output/
