@@ -4,7 +4,8 @@ pipelines:
     - step:
         name: "1. Single Page"
         script:
-          - ./1-single-page/generate.sh
+          - cd 1-single-page
+          - ./generate.sh
         variables:
           API_TOKEN: $API_TOKEN
         artifacts:
