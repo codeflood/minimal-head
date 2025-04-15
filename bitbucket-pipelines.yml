@@ -9,4 +9,4 @@ pipelines:
         variables:
           API_TOKEN: $API_TOKEN
         artifacts:
-          - ./1-single-page/output/**
+          - 1-single-page/output/**
