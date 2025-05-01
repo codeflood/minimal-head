@@ -1,12 +1,23 @@
 image: atlassian/default-image:4
 pipelines:
   default:
-    - step:
-        name: "1. Single Page"
-        script:
-          - cd 1-single-page
-          - ./generate.sh
-        variables:
-          API_TOKEN: $API_TOKEN
-        artifacts:
-          - 1-single-page/output/**
+    - parallel:
+        steps:
+        - step:
+            name: "1. Single Page"
+            script:
+              - cd 1-single-page
+              - ./generate.sh
+            variables:
+              API_TOKEN: $API_TOKEN
+            artifacts:
+              - 1-single-page/output/**
+        - step:
+            name: "2. Multiple Pages"
+            script:
+              - cd 2-multiple-pages
+              - ./generate.sh
+            variables:
+              API_TOKEN: $API_TOKEN
+            artifacts:
+              - 2-multiple-pages/output/**
