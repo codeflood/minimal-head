@@ -21,3 +21,57 @@ pipelines:
               API_TOKEN: $API_TOKEN
             artifacts:
               - 2-multiple-pages/output/**
+        - step:
+            name: "3. More field types"
+            script:
+              - cd 3-more-field-types
+              - ./generate.sh
+            variables:
+              API_TOKEN: $API_TOKEN
+            artifacts:
+              - 3-more-field-types/output/**
+        - step:
+            name: "4. Page all results"
+            script:
+              - cd 4-page-all-results
+              - ./generate.sh
+            variables:
+              API_TOKEN: $API_TOKEN
+            artifacts:
+              - 4-page-all-results/output/**
+        - step:
+            name: "5. List page"
+            script:
+              - cd 5-list-page
+              - ./generate.sh
+            variables:
+              API_TOKEN: $API_TOKEN
+            artifacts:
+              - 5-list-page/output/**
+        - step:
+            name: "6. Multiple page types"
+            script:
+              - cd 6-multiple-page-types
+              - ./generate.sh
+            variables:
+              API_TOKEN: $API_TOKEN
+            artifacts:
+              - 6-multiple-page-types/output/**
+        - step:
+            name: "7. Refactor"
+            script:
+              - cd 7-multiple-page-types-refactored
+              - ./generate.sh
+            variables:
+              API_TOKEN: $API_TOKEN
+            artifacts:
+              - 7-multiple-page-types-refactored/output/**
+        - step:
+            name: "8. Layouts and components"
+            script:
+              - cd 8-layouts-and-components
+              - ./generate.sh
+            variables:
+              API_TOKEN: $API_TOKEN
+            artifacts:
+              - 8-layouts-and-components/output/**
